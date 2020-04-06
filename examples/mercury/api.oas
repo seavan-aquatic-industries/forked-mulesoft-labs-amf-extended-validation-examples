@@ -1,0 +1,137 @@
+openapi: "3.0.0"
+info:
+  title: Test Raml File
+  description: This is a description of the API spec
+  version: v1
+
+components:
+  schemas:
+    ClassA:
+      description: Class A type
+      type: object
+      additionalProperties: true
+      required:
+        - property1
+      properties:
+        property1:
+          description: String type property.
+          type: string
+        property2:
+          description: Number data type property.
+          type: integer
+paths:
+  /resource: {}
+  /resource/{resource_id}:
+    parameters:
+      -
+        name: resource_id
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: getResource
+      description: Get this resource
+      parameters:
+        -
+          name: expand_param
+          description: The expand parameter. A comma separated list with the allowed values (availability, links, promotions, options, images, prices, variations)
+          required: false
+          in: query
+          example:
+            - availability
+            - links
+            - promotions
+            - options
+            - images
+            - prices
+            - variations
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Document representing a site.
+                type: object
+                additionalProperties: true
+                properties:
+                  allowed_currencies:
+                    description: The list of allowed currencies.
+                    type: array
+                    items:
+                      type: string
+        "404":
+          description: Resource not found
+    post:
+      operationId: createResource
+      description: TODO Create this resource
+      responses:
+        "201":
+          description: Created
+        "404":
+          description: Resource not found
+    put:
+      operationId: updateResource
+      description: Update this resource
+      responses:
+        "404":
+          description: Resource not found
+    patch:
+      operationId: patchResource
+      description: Patch this resource
+      responses:
+        "202":
+          description: Accepted
+        "404":
+          description: Resource not found
+    head:
+      operationId: checkResource
+      description: Check presene of this resource
+      responses:
+        "200":
+          description: Ok
+        "404":
+          description: Resource not found
+    delete:
+      operationId: deleteResource
+      description: Patch this resource
+      responses:
+        "202":
+          description: Accepted
+        "404":
+          description: Resource not found
+  /resource2: {}
+  /resource2/{id}:
+    parameters:
+      -
+        name: id
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: getResource2
+      description: Get the resource?
+      responses:
+        "200":
+          description: Successfully retrieved products
+          content:
+            application/json:
+              schema:
+                description: Class A type
+                type: object
+                additionalProperties: true
+                required:
+                  - property1
+                properties:
+                  property1:
+                    description: String type property.
+                    type: string
+                  property2:
+                    description: Number data type property.
+                    type: integer
