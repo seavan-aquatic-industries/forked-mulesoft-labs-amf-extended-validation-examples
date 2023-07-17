@@ -17,8 +17,6 @@ paths:
                 properties:
                   name:
                     type: string
-                  noName:
-                    type: string
   /endpoint2:
     get:
       x-lds-key:
