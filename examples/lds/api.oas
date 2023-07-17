@@ -1,4 +1,5 @@
-openapi: "3.0.0"
+openapi:
+  version: "3.0.0"
 info:
   title: Test API2
   version: "2.0"
