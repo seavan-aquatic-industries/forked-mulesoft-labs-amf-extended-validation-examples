@@ -16,6 +16,6 @@
   "types": "./typings/amf-client-js.d.ts",
   "typings": "./typings/amf-client-js.d.ts",
   "dependencies": {
-    "ajv": "6.5.2"
+    "ajv": "6.12.6"
   }
 }
